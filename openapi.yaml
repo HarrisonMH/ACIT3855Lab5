@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Food Order API - Kafka Event Consumer
+  description: Fetches events from Kafka messaging service
+paths:
+  /events/pickup:
+    get:
+      description: Get the nth pickup event from the first event, where n is defined by offset
+      operationId: app.get_pickup_event
+      parameters:
+        - in: query
+          name: offset
+          schema:
+            type: integer
+          required: true
+          description: Value of query offset
+      responses:
+        '200':
+          description: Successful response
+
+
+  /events/delivery:
+    get:
+      description: Get first delivery order event after given offset
+      operationId: app.get_delivery_event
+      parameters:
+      - in: query
+        name: offset
+        schema:
+          type: integer
+        required: true
+        description: Value of query offset
+      responses:
+        '200':
+          description: Successful response
